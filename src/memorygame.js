@@ -7,6 +7,7 @@ MemoryGame.prototype.init = function(size) {
    this._moves = 0;
    this._selected = [];
    
+   // as used by @steveukx
    this._grid = (new String(new Array(this._size * this._size)).split(",").map(function() { 
       return new MemoryGame.Item();
    })).sort(function() { 
@@ -36,7 +37,7 @@ MemoryGame.prototype.selectItem = function(row, col) {
       
       if (this._selected.length === 2) {
          if (this._selected[0].value === this._selected[1].value) {
-            var gameOver = !!this._grid.filter(function(item) {
+            var gameOver = !!!this._grid.filter(function(item) {
                return !item.exposed;
             }).length;
             this._selected = [];
