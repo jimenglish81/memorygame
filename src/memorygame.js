@@ -1,16 +1,20 @@
-function MemoryGame() {
-
-}
-
-MemoryGame.prototype.init = function(size) {
-   this._size = size || MemoryGame.SIZE;
+function MemoryGame(width, height) {
+   this.width = width || MemoryGame.WIDTH;
+   this.height = height || MemoryGame.HEIGHT;
+   this._size = this.height * this.width;
    this._moves = 0;
    this._selected = [];
-   
+
+   this._initialise();
+}
+
+MemoryGame.prototype._initialise = function() {
+   var numberOfPairs = this._size / 2;
+
    // as used by @steveukx
-   this._grid = (new String(new Array(this._size * this._size)).split(",").map(function() { 
-      return new MemoryGame.Item();
-   })).sort(function() { 
+   this.grid = (new String(new Array(this.width * this.height)).split(',').map(function(value, index) { 
+      return new MemoryGame.Item(index % numberOfPairs + 1);
+   }, this)).sort(function() { 
       return 0.5 - Math.random(); 
    });
    
@@ -18,7 +22,7 @@ MemoryGame.prototype.init = function(size) {
 };
 
 MemoryGame.prototype._getItem = function(row, col) {
-   return this._grid[row * this._size + col];
+   return this.grid[row * this.width + col];
 };
 
 MemoryGame.prototype.selectItem = function(row, col) {
@@ -37,7 +41,7 @@ MemoryGame.prototype.selectItem = function(row, col) {
       
       if (this._selected.length === 2) {
          if (this._selected[0].value === this._selected[1].value) {
-            var gameOver = !!!this._grid.filter(function(item) {
+            var gameOver = !this._grid.filter(function(item) {
                return !item.exposed;
             }).length;
             this._selected = [];
@@ -49,10 +53,13 @@ MemoryGame.prototype.selectItem = function(row, col) {
       
       this._moves++;
    }
+
    return this;
 };
 
-MemoryGame.SIZE = 3;
+MemoryGame.WIDTH = 5;
+
+MemoryGame.HEIGHT = 4;
 
 MemoryGame.Item = function(value) {
    this.value = value;
