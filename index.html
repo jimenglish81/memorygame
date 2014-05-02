@@ -9,20 +9,20 @@
       <link href="src/memorygame.css" rel="stylesheet" type="text/css">
    </head>
    <body>
-	  <div id="game"></div>
-	  <button id="reset">reset</button>
-	  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <div id="game"></div>
+      <button id="reset">reset</button>
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
       <script src="src/memorygame.js"> </script>
       <script src="src/memorygameview.js"> </script>
       <script>
-        var game = new MemoryGame();
-		var view = new MemoryGameView(game, '#game');
-		view.render();
+         var game = new MemoryGame();
+         var view = new MemoryGameView(game, '#game');
+         view.render();
 		
-		$('#reset').on('click', function() {
-			game.reset();
-			view.render();
-		});
+         $('#reset').on('click', function() {
+	    game.reset();
+	    view.render();
+         });
       </script>
    </body>
 </html>
