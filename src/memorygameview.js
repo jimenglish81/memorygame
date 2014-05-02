@@ -22,14 +22,30 @@ MemoryGameView.prototype.render = function() {
 };
 
 MemoryGameView.prototype._handleItemClicked = function(evt) {
-   var jTarget = $(evt.currentTarget);
-   this._game.selectItem(jTarget.data('item'));
-   this._jContainer.find('.item').removeClass('selected').each(function(index, el) {
+   var game = this._game,
+      jTarget = $(evt.currentTarget);
+   if (game.isComplete() || jTarget.hasClass('selected correct')) {
+      return false;
+   }
+   var jItems = this._jContainer.find('.item').removeClass('selected');
+   game.selectItem(jTarget.data('item'));
+      
+   window.clearTimeout(this._timeout);
+   
+   jItems.each(function(index, el) {
       var jEl = $(el),
          item = jEl.data('item');
       jEl.toggleClass('selected', item.exposed)
          .toggleClass('correct',  item.correct);
    });
+   
+   if (game.hasMaximumSelected()) {
+      this._timeout = window.setTimeout(function() {
+         jItems.removeClass('selected');
+      }, 2000);
+   }
+   
+   return false;
 };
 
 MemoryGameView.buildItem = function(game, item) {

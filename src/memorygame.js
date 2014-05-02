@@ -48,6 +48,7 @@ MemoryGame.prototype.selectItem = function(item) {
             }).length;
             if (gameOver) {
                console.log('won!');
+               this._complete = true;
             }
          }
       }
@@ -60,6 +61,10 @@ MemoryGame.prototype.selectItem = function(item) {
 
 MemoryGame.prototype.hasMaximumSelected = function() {
    return this._selected.length === 2;
+};
+
+MemoryGame.prototype.isComplete = function() {
+   return !!this._complete;
 };
 
 MemoryGame.WIDTH = 5;
