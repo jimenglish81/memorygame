@@ -28,7 +28,7 @@ MemoryGame.prototype._getItem = function(row, col) {
 MemoryGame.prototype.selectItem = function(item) {
    var selectedLen = this._selected.length;
    
-   if (item) {
+   if (item && this._selected.indexOf(item) === -1) {
       if (this.hasMaximumSelected()) {
          while(selectedLen--) {
             this._selected.pop().exposed = false;
@@ -39,7 +39,7 @@ MemoryGame.prototype.selectItem = function(item) {
       this._selected.push(item);
     
       if (this.hasMaximumSelected()) {
-         if (this._selected[0].value === this._selected[1].value) {
+         if (MemoryGame.Item.match(this._selected[0], this._selected[1])) {
             this._selected.forEach(function(item) {
                item.correct = true;
             });
@@ -75,4 +75,8 @@ MemoryGame.Item = function(value) {
    this.value = value;
    this.exposed = false;
    this.correct = false;
+};
+
+MemoryGame.Item.match = function(itemA, itemB) {
+   return itemA.value === itemB.value;
 };
