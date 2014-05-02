@@ -23,19 +23,13 @@ MemoryGameView.prototype.render = function() {
 
 MemoryGameView.prototype._handleItemClicked = function(evt) {
    var jTarget = $(evt.currentTarget);
-   if (this._game.hasMaximumSelected()) {
-      this._jContainer.find('.item').removeClass('.selected').each(function(index, el) {
-         var jEl = $(el),
-            item = jEl.data('item');
-         jEl.toggleClass('selected', item.exposed || item.correct);
-      });
-   }
-   this._selectItem(jTarget);
-};
-
-MemoryGameView.prototype._selectItem = function(jItem) {
-   jItem.addClass('selected');
-   this._game.selectItem(jItem.data('item'));
+   this._game.selectItem(jTarget.data('item'));
+   this._jContainer.find('.item').removeClass('selected').each(function(index, el) {
+      var jEl = $(el),
+         item = jEl.data('item');
+      jEl.toggleClass('selected', item.exposed)
+         .toggleClass('correct',  item.correct);
+   });
 };
 
 MemoryGameView.buildItem = function(game, item) {

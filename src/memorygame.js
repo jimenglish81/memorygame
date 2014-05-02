@@ -43,7 +43,7 @@ MemoryGame.prototype.selectItem = function(item) {
             this._selected.forEach(function(item) {
                item.correct = true;
             });
-            var gameOver = !this._grid.filter(function(item) {
+            var gameOver = !this.grid.filter(function(item) {
                return !item.correct;
             }).length;
             if (gameOver) {
