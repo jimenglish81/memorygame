@@ -30,6 +30,7 @@ body {
    perspective: 1000; 
 }
 
+/* Flip animation for cards as used by http://davidwalsh.name/css-flip */
 .item-inner {
    position: absolute;
    top: 2%;
