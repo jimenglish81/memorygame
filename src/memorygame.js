@@ -25,6 +25,8 @@ MemoryGame.prototype._initialise = function() {
 
 MemoryGame.prototype.reset = function() {
   this._initialise(); 
+  
+  return this;
 };
 
 MemoryGame.prototype._getItem = function(row, col) {
