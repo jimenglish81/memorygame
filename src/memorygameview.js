@@ -18,6 +18,10 @@ MemoryGameView.prototype.render = function() {
       }).append(this._game.grid.map(MemoryGameView.buildItem.bind(null, this._game)))
         .appendTo(this._jContainer.empty());
    
+   if (!this._jResults) {
+      this._jResults = MemoryGameView.RESULTS.clone().appendTo(document.body);
+   }
+   this._jResults.hide();
    return this;
 };
 
@@ -45,6 +49,10 @@ MemoryGameView.prototype._handleItemClicked = function(evt) {
       }, 2000);
    }
    
+   if (game.isComplete()) {
+      this._jResults.text('You won in ' + game.getMoves() + ' moves').show();
+   }
+   
    return false;
 };
 
@@ -65,3 +73,5 @@ MemoryGameView.buildItem = function(game, item) {
 MemoryGameView.TEMPLATE = $('<div class="game-container" />');
 
 MemoryGameView.ITEM_TEMPLATE = $('<div class="item"><div class="item-inner"><div class="front" /><div class="back" /></div>');
+
+MemoryGameView.RESULTS = $('<div class="results" />');

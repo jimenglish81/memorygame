@@ -2,15 +2,17 @@ function MemoryGame(width, height) {
    this.width = width || MemoryGame.WIDTH;
    this.height = height || MemoryGame.HEIGHT;
    this._size = this.height * this.width;
-   this._moves = 0;
-   this._selected = [];
 
    this._initialise();
 }
 
 MemoryGame.prototype._initialise = function() {
    var numberOfPairs = this._size / 2;
-
+   
+   this._moves = 0;
+   this._selected = [];
+   this._complete = false;
+   
    // as used by @steveukx
    this.grid = (new String(new Array(this.width * this.height)).split(',').map(function(value, index) { 
       return new MemoryGame.Item(index % numberOfPairs + 1);
@@ -19,6 +21,10 @@ MemoryGame.prototype._initialise = function() {
    });
    
    return this;
+};
+
+MemoryGame.prototype.reset = function() {
+  this._initialise(); 
 };
 
 MemoryGame.prototype._getItem = function(row, col) {
@@ -47,7 +53,6 @@ MemoryGame.prototype.selectItem = function(item) {
                return !item.correct;
             }).length;
             if (gameOver) {
-               console.log('won!');
                this._complete = true;
             }
          }
@@ -65,6 +70,10 @@ MemoryGame.prototype.hasMaximumSelected = function() {
 
 MemoryGame.prototype.isComplete = function() {
    return !!this._complete;
+};
+
+MemoryGame.prototype.getMoves = function() {
+   return this._moves;
 };
 
 MemoryGame.WIDTH = 5;
