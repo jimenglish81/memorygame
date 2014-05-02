@@ -20,6 +20,11 @@ body {
    color: #6996AD;
    background: #fff;
    cursor: pointer;
+   outline: none;
+}
+
+#reset:focus {
+  outline: none;
 }
 
 .item {
