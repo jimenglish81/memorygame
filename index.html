@@ -7,8 +7,6 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/jimenglish81/memorygame/master/src/memorygame.css">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,23 +14,29 @@
   </head>
   <body>
     <div class="wrapper">
+      <header>
         <h1>Memorygame</h1>
-        <div id="game"></div>
-	      <button id="reset">reset</button>
-	      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="https://raw.githubusercontent.com/jimenglish81/memorygame/master/src/memorygame.js"> </script>
-        <script src="https://raw.githubusercontent.com/jimenglish81/memorygame/master/src/memorygameview.js"> </script>
-        <script>
-            var game = new MemoryGame();
-		        var view = new MemoryGameView(game, '#game');
-		        view.render();
-		
-		        $('#reset').on('click', function() {
-			         game.reset();
-			         view.render();
-		        });
-        </script>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/jimenglish81/memorygame">View the Project on GitHub <small>jimenglish81/memorygame</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jimenglish81/memorygame/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jimenglish81/memorygame/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jimenglish81/memorygame">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a name="memory-game" class="anchor" href="#memory-game"><span class="octicon octicon-link"></span></a>Memory Game</h3>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jimenglish81">jimenglish81</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
