@@ -48,10 +48,10 @@ body {
 /* Flip animation for cards as used by http://davidwalsh.name/css-flip */
 .item-inner {
    position: absolute;
-   top: 2%;
-   right: 2%;
-   bottom: 2%;
-   left: 2%;
+   top: 4%;
+   right: 4%;
+   bottom: 4%;
+   left: 4%;
    border: 2px solid #507786;
    border-radius: 10px;
    transition: 0.8s;
