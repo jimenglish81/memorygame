@@ -4,10 +4,10 @@ body {
 }
 
 #game {
-   top: 10%;
-   right: 10%;
-   bottom: 10%;
-   left: 10%;
+   top: 15%;
+   right: 20%;
+   bottom: 15%;
+   left: 20%;
    position: absolute;
 }
 
