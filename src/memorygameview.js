@@ -1,6 +1,6 @@
 function MemoryGameView(game, cssSelector) {
    this._game = game;
-   this._jContainer = $(cssSelector).css('position', 'relative');
+   this._jContainer = $(cssSelector);
    this._addEvents();
 }
 
@@ -9,14 +9,9 @@ MemoryGameView.prototype._addEvents = function() {
 };
 
 MemoryGameView.prototype.render = function() {
-   var jDom = MemoryGameView.TEMPLATE.clone().css({
-         position: 'absolute',
-         top: 0,
-         right: 0,
-         bottom: 0,
-         left: 0
-      }).append(this._game.grid.map(MemoryGameView.buildItem.bind(null, this._game)))
-        .appendTo(this._jContainer.empty());
+   var jDom = MemoryGameView.TEMPLATE.clone()
+         .append(this._game.grid.map(MemoryGameView.buildItem.bind(null, this._game)))
+         .appendTo(this._jContainer.empty());
    
    if (!this._jResults) {
       this._jResults = MemoryGameView.RESULTS.clone().appendTo(document.body);
